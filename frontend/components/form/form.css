@@ -1,0 +1,15 @@
+.email-input-wrapper, .password-input-wrapper {
+   display: flex;
+   flex-direction: column;
+   font-family: 'Poppins';
+
+}
+
+.input-box {
+   margin-top: 5px;
+   margin-bottom: 15px;
+   padding: 10px;
+   border-radius: 2.5px;
+   border: 1px solid #D9E1EC;
+   color: grey;
+}
