@@ -1,0 +1,12 @@
+.submit-button {
+   display: flex;
+   background-color: #1E5EFF;
+   border: none;
+   color: white;
+   font-family: 'Montserrat';
+   width: 100%;
+   border-radius:2.5px;
+   padding: 10px 20px;
+   text-align: center;
+   justify-content: center;
+}
