@@ -13,6 +13,8 @@ export default async function Profile() {
    if (!session) {
       redirect('/')
    }
+
+	fetch
 	const user = await getUser(session?.user.email);
 
 	return (

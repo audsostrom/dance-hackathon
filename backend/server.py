@@ -219,7 +219,10 @@ def data():
               
                 # def stream_context():
                     # yield file
+
+                # ADDING THIS TO TRY QUIZZES STUFF
                 print(data, acc)
+
                 yield data
                     # yield (b'--frame\r\n'
                     #     b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
@@ -232,6 +235,8 @@ def data():
             
             else:
                 camera.release()
+
+
 @app.route('/pose_feed', methods=['GET'])
 def pose_feed():
     # return webcam()

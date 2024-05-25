@@ -2,6 +2,8 @@ import User from '@/models/user';
 import {NextResponse} from 'next/server';
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
+import Quiz from '@/models/quiz';
+import { ObjectId } from 'mongodb';
 
 
 /**
@@ -10,8 +12,10 @@ import mongoose from 'mongoose';
  */
 export const connectMongoDB = async () => {
 	try {
+		console.log('im here')
 		await mongoose.connect(process.env.MONGODB_URI);
 	} catch (error) {
+		console.log('im fail')
 		console.error('Error connecting to MongoDB: ', error);
 	}
 };
@@ -71,6 +75,29 @@ export async function getUser(email) {
 	} catch (error) {
 		return NextResponse.json(
 			{message: 'An error occurred while getting the user.'},
+			{status: 500}
+		);
+	}
+}
+
+export async function getQuiz(quizId) {
+	try {
+		console.log('quiz 1')
+		await connectMongoDB();
+		console.log('quiz 2')
+
+
+		// findOne() gives one document that matches the criteria
+  		const objectId = ObjectId.createFromHexString(quizId);
+		console.log('hi', objectId)
+		const quiz = await Quiz.findOne({ _id: objectId});
+		const returnVal = quiz === null ? null : quiz;
+		console.log('returnVal', returnVal)
+		return returnVal;
+	} catch (error) {
+		console.log(error)
+		return NextResponse.json(
+			{message: 'An error occurred while getting the quiz.'},
 			{status: 500}
 		);
 	}
