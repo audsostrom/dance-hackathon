@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
  */
 const WEBCAM_ENDPOINT = "http://127.0.0.1:5000/video_feed"
 const POSE_ENDPOINT = "http://127.0.0.1:5000/pose_feed"
-console.log({POSE_ENDPOINT})
+// console.log({POSE_ENDPOINT})
 
 
 

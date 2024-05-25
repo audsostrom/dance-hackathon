@@ -213,10 +213,13 @@ def data():
                 frame = buffer.tobytes()
         
                 # file = {'file': (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')}
-                # file = {'file': ('image.jpg', buffer.tostring(), 'image/jpeg', {'Expires': '0'})}
-                data = str(round(body_language_prob[np.argmax(body_language_prob)], 2))
+                # file = {'file': ('image.jpg', buffer.tostring(), 'image/jpeg', {'Expires': '0'}}
+                acc = round(body_language_prob[np.argmax(body_language_prob)], 2)
+                data = body_language_class.split(' ')[0] if acc > 0.5 else "idle"
+              
                 # def stream_context():
                     # yield file
+                print(data, acc)
                 yield data
                     # yield (b'--frame\r\n'
                     #     b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
