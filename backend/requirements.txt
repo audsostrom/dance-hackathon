@@ -1,0 +1,11 @@
+opencv-python-headless
+scipy
+fastdtw
+mediapipe
+pytube
+opencv-python
+flask
+flask_cors
+scikit-learn
+pandas
+numpy
