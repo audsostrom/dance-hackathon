@@ -5,12 +5,8 @@ import { redirect } from 'next/navigation';
 import Option from './_components/option/option';
 
 const WEBCAM_ENDPOINT = 'http://127.0.0.1:5000/video_feed';
-export default async function Quiz({ params: { id, question } }) {
+export default async function Quiz({ params: { id, questionId } }) {
   const response = await getQuiz(id);
-  console.log('hi', response);
-  console.log('params', question);
-
-  console.log('test', response.questions[question].question);
 
   const danceOptions = {
     dab: 0,
@@ -28,17 +24,17 @@ export default async function Quiz({ params: { id, question } }) {
 
   return (
     <div>
-      <StreamComponent />
+      <StreamComponent status={"quiz"} numLastQuestionId={response.questions.length -1}/>
       <div className='question-container'>
-        <h1>{response.questions[question].question}</h1>
+        <h1>{response.questions[questionId].question}</h1>
         {/** print out options */}
         <div className='options-container'>
-          {response.questions[question].options.map((option, index) => (
+          {response.questions[questionId].options.map((option, index) => (
             <Option key={index} name={option} color={colors[index]} />
           ))}
         </div>
         <div className='footer'>
-          <h3>hit the emote for the correct answer!</h3>
+          <h3 className='footer-h3'>hit the emote for the correct answer!</h3>
         </div>
 
         <div className='stream-container'>
