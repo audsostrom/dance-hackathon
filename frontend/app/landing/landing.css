@@ -1,0 +1,26 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  gap: 10vh;
+}
+.login-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8a22a2;
+  width: 24vw;
+  height: 8vh;
+  border-radius: 15px;
+  font-family: 'bd-caramel-variable', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 4px;
+}
+.hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
