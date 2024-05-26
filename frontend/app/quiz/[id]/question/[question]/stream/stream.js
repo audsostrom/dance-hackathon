@@ -13,6 +13,14 @@ export const StreamComponent = () => {
   const router = useRouter();
   const params = useParams();
 
+  const danceOptions = {
+    'dab': 0,
+    'whip': 1,
+    'squidward': 2,
+    'come up with fourth move': 3
+  }
+
+
   useEffect(() => {
     const fetchStream = async () => {
       const response = await fetch(POSE_ENDPOINT);
@@ -38,7 +46,7 @@ export const StreamComponent = () => {
   if (messages.slice(Math.max(messages.length - 5, 0)).every(val => val === messages[messages.length - 1] && val != 'idle') && messages && messages.length > 0) {
     console.log('yippee', messages[messages.length - 1])
     // i hard coded the response, but it would be whatever number we assign the emote
-    router.push(`/answer/${params['id']}/question/${params['question']}/1`) // temporary
+    router.push(`/answer/${params['id']}/question/${params['question']}/${danceOptions[messages[messages.length - 1]]}`) // temporary
   }
 
   return (

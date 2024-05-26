@@ -12,6 +12,13 @@ export default async function Quiz({params}) {
   console.log('params', params)
 
 
+  const danceOptions = {
+    'dab': 0,
+    'whip': 1,
+    'squidward': 2,
+    'come up with fourth move': 3
+  }
+
 
 
 	return (
@@ -19,8 +26,11 @@ export default async function Quiz({params}) {
          <img width={400} height={400} src={WEBCAM_ENDPOINT} alt="webcam" />
          <StreamComponent />
          {/** print out options */}
-         {response.questions[0].options.map((question, index) => (
-          <p key={index}>{question}</p>
+         {response.questions[Number(params['question'])].options.map((option, index) => (
+          (index == 0 && <p key={index}>{option} <i>{'(dab for this option)'}</i></p>)
+          (index == 1 && <p key={index}>{option} <i>{'(whip for this option)'}</i></p>)
+          (index == 3 && <p key={index}>{option} <i>{'(squidward for this option)'}</i></p>)
+          (index == 4 && <p key={index}>{option} <i>{'(idk for this option)'}</i></p>)
         ))}
       </div>
 	);
