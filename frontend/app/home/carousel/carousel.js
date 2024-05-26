@@ -12,12 +12,10 @@ import Image from 'next/image';
  */
 
 export default function Carousel(props) {
-   console.log('props', props)
    // href={`/quiz/${question._id.toString()}/question/1`}
    const [index, setIndex] = useState(0);
 
    const slideLeft = () => {
-      console.log(index)
       if (props.cards.slice(index-1, index+3).length == 4) {
          setIndex((prevIndex) => (prevIndex - 1 + props.cards.length) % props.cards.length);
       }
@@ -26,7 +24,6 @@ export default function Carousel(props) {
     console.log
   
     const slideRight = () => {
-      console.log(index)
       if (props.cards.slice(index+1, index+5).length == 4) {
          setIndex((prevIndex) => (prevIndex  + 1) % props.cards.length);
       }

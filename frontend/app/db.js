@@ -12,7 +12,6 @@ import { ObjectId } from 'mongodb';
  */
 export const connectMongoDB = async () => {
 	try {
-		console.log('im here')
 		await mongoose.connect(process.env.MONGODB_URI);
 	} catch (error) {
 		console.log('im fail')
@@ -47,6 +46,29 @@ export async function createUser(email, password) {
 	} catch (error) {
 		return NextResponse.json(
 			{message: 'An error occurred while registering the user.'},
+			{status: 500}
+		);
+	}
+}
+
+export async function createQuiz(email, questionSet, title) {
+	try {
+		await connectMongoDB();
+		// create new user in database with no saved recipes to start
+		const user = await getUser(email);
+		await Quiz.create({
+			creatorId: user._id.toString(),
+			title: title,
+			questions: questionSet,
+		});
+
+		return NextResponse.json(
+			{message: 'Quiz created.'},
+			{status: 201}
+		);
+	} catch (error) {
+		return NextResponse.json(
+			{message: 'An error occurred while creating the quiz.'},
 			{status: 500}
 		);
 	}
@@ -133,6 +155,7 @@ export async function getAllUsers(ids) {
 	}
 
 }
+
 export async function getAllQuizzes() {
 	try {
 		await connectMongoDB();
