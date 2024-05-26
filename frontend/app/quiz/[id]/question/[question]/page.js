@@ -27,10 +27,13 @@ export default async function Quiz({params}) {
          <StreamComponent />
          {/** print out options */}
          {response.questions[Number(params['question'])].options.map((option, index) => (
-          (index == 0 && <p key={index}>{option} <i>{'(dab for this option)'}</i></p>)
-          (index == 1 && <p key={index}>{option} <i>{'(whip for this option)'}</i></p>)
-          (index == 3 && <p key={index}>{option} <i>{'(squidward for this option)'}</i></p>)
-          (index == 4 && <p key={index}>{option} <i>{'(idk for this option)'}</i></p>)
+          <p key={index}>
+            {option}
+            {index === 0 && <i> {'(dab for this option)'}</i>}
+            {index === 1 && <i> {'(whip for this option)'}</i>}
+            {index === 2 && <i> {'(squidward for this option)'}</i>}
+            {index === 3 && <i> {'(idk for this option)'}</i>}
+          </p>
         ))}
       </div>
 	);

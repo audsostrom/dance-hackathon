@@ -58,11 +58,6 @@ export const StreamComponent = () => {
           <p key={index}>{message}</p>
         ))} */}
       </div>
-      {messages.slice(Math.max(messages.length - 5, 0)).map((message, index) => (
-          <p key={index}>{message}</p>
-      ))}
-
-      {messages.slice(Math.max(messages.length - 5, 0)).every(val => val === messages[0] && val != 'idle') && <div>you've done a lot of dabs</div>}
     </div>
   );
 };

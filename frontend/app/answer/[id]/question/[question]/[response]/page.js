@@ -17,6 +17,7 @@ export default async function Answer({params}) {
       <div>
         <h1>The correct answer to the question "{question.question}" was...</h1>
         <div>{question.options[question.answer]}</div>
+        <h2>You answered {question.options[Number(params['response'])]}</h2>
         {
           (Number(params['question']) - 1 < response.questions.length - 1) &&         
           
