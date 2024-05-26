@@ -1,0 +1,19 @@
+.carousel-container {
+   margin-left: 60px;
+   margin-top: 30px;
+   display: flex;
+   
+}
+
+.card {
+
+   background-color: #3A3636;
+   padding: 30px;
+   width: 200px;
+   text-align: center;
+   height: 200px;
+   border-radius: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}

@@ -1,9 +1,10 @@
-import './profile.css';
+import './home.css';
 
 import { signOut, auth } from '../auth';
 import { getUser, getUserQuizzes, getAllQuizzes } from '../db';
 import { redirect } from 'next/navigation'
 import Link from 'next/link';
+import Carousel from './carousel/carousel';
 
 /**
  * @return {*} – Renders the Profile page
@@ -22,22 +23,13 @@ export default async function Home() {
 
 	return (
 		<div className='home-container'>
-         oop
-         <div className="top-settings-row">
-				<h1 className="subtitle">Home</h1>
-            <div>{user.email}</div>
-				<h2>Your study decks</h2>
-				{userQuizzes.map((question, index) => (
-					<Link href={`/quiz/${question._id.toString()}/question/1`}>
-					   <p key={index}>{question.title}</p>
-					</Link>
-        		))}
-				<h2>All Study Decks</h2>
-				{allQuizzes.map((question, index) => (
-					<Link href={`/quiz/${question._id.toString()}/question/1`}>
-						<p key={index}>{question.title}</p>
-					</Link>
-        		))}
+			<div className="area" >
+			<div className="top-settings-row">
+				<h1 className="title">home</h1>
+				<h2 className='subtitle'>Your study decks</h2>
+				{allQuizzes && <Carousel cards={userQuizzes}></Carousel>}
+				<h2 className='subtitle'>All Study Decks</h2>
+				{allQuizzes && <Carousel cards={allQuizzes}></Carousel>}
 				<form
 					className="sign-out"
 					action={async () => {
@@ -51,6 +43,19 @@ export default async function Home() {
 					</button>
 				</form>
 			</div>
+            <ul className="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    		</div >
 		</div>
 	);
 }
