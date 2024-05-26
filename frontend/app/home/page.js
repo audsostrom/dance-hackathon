@@ -24,15 +24,15 @@ export default async function Home() {
 		<div className='home-container'>
          oop
          <div className="top-settings-row">
-				<div className="subtitle">Home</div>
+				<h1 className="subtitle">Home</h1>
             <div>{user.email}</div>
-				<h1>Your study decks</h1>
+				<h2>Your study decks</h2>
 				{userQuizzes.map((question, index) => (
 					<Link href={`/quiz/${question._id.toString()}/question/1`}>
 					   <p key={index}>{question.title}</p>
 					</Link>
         		))}
-				<h1>All Study Decks</h1>
+				<h2>All Study Decks</h2>
 				{allQuizzes.map((question, index) => (
 					<Link href={`/quiz/${question._id.toString()}/question/1`}>
 						<p key={index}>{question.title}</p>

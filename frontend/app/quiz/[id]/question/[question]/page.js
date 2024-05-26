@@ -26,7 +26,7 @@ export default async function Quiz({params}) {
          <img width={400} height={400} src={WEBCAM_ENDPOINT} alt="webcam" />
          <StreamComponent />
          {/** print out options */}
-         {response.questions[Number(params['question'])].options.map((option, index) => (
+         {response.questions[Number(params['question'])-1].options.map((option, index) => (
           <p key={index}>
             {option}
             {index === 0 && <i> {'(dab for this option)'}</i>}

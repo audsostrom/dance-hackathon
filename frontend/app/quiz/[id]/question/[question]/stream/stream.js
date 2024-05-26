@@ -45,7 +45,7 @@ export const StreamComponent = () => {
 
   if (messages.slice(Math.max(messages.length - 5, 0)).every(val => val === messages[messages.length - 1] && val != 'idle') && messages && messages.length > 0) {
     console.log('yippee', messages[messages.length - 1])
-    // i hard coded the response, but it would be whatever number we assign the emote
+    // redirect based on response
     router.push(`/answer/${params['id']}/question/${params['question']}/${danceOptions[messages[messages.length - 1]]}`) // temporary
   }
 
