@@ -33,7 +33,6 @@ export default async function Home() {
 	const userQuizzes = (await getUserQuizzes(session?.user.email)).map(convertQuizToProp);
 	const allQuizzes = (await getAllQuizzes()).map(convertQuizToProp);
 	const allUsers = await getAllUsers(allQuizzes.map((quiz)=> quiz.creatorId))
-	console.log(allUsers)
 
 	return (
 		<div className='home-container'>
@@ -56,7 +55,7 @@ export default async function Home() {
 				</div>
 				<div className='your-decks'>
 				<h2 className='subtitle'>Your study decks</h2>
-				<Link style={{marginLeft: 'auto'}} href='/new-deck'>
+				<Link style={{marginLeft: 'auto', zIndex: 6}} href='/new-deck'>
 					<button className='new-deck-button'>&#x2b; <i>make a new deck</i></button>
 				</Link>
 

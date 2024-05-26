@@ -7,6 +7,7 @@
 
    margin-left: 60px;
    padding-top: 30px;
+   width: 70vw;
 }
 
 .top-settings-row {
@@ -44,15 +45,6 @@
    z-index: 6;
 }
 
-.area{
-   background: #121534;  
-   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
-   width: 100%;
-   height: calc(100% + 100px);
-   overflow-y: scroll;
-   
-  
-}
 
 .your-decks {
    display: flex;
@@ -67,10 +59,10 @@
    font-family: "coolvetica", sans-serif;
    font-weight: 700;
    border: none;
+   z-index: 7;
 }
 
 .circles{
-   position: absolute;
    top: 0;
    left: 0;
    width: 100%;

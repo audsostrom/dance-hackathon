@@ -12,6 +12,7 @@ import './submit-button.css';
  */
 export function SubmitButton({children}) {
 	const {pending} = useFormStatus();
+	console.log(pending)
 
 	return (
 		<button
