@@ -50,15 +50,17 @@ export const StreamComponent = () => {
   }
 
   return (
-    <div>
-      <h1>Streaming Data</h1>
-      <div id="stream-container">
-         {messages[messages.length - 1]}
-        {/* {messages.map((message, index) => (
-          <p key={index}>{message}</p>
-        ))} */}
-      </div>
-    </div>
+    <>
+    </>
+    // <div>
+    //   <h1>Streaming Data</h1>
+    //   <div id="stream-container">
+    //      {messages[messages.length - 1]}
+    //     {/* {messages.map((message, index) => (
+    //       <p key={index}>{message}</p>
+    //     ))} */}
+    //   </div>
+    // </div>
   );
 };
 

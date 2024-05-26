@@ -28,13 +28,13 @@ export default async function Home() {
             <div>{user.email}</div>
 				<h2>Your study decks</h2>
 				{userQuizzes.map((question, index) => (
-					<Link href={`/quiz/${question._id.toString()}/question/1`}>
+					<Link href={`/quiz/${question._id.toString()}/question/0`}>
 					   <p key={index}>{question.title}</p>
 					</Link>
         		))}
 				<h2>All Study Decks</h2>
 				{allQuizzes.map((question, index) => (
-					<Link href={`/quiz/${question._id.toString()}/question/1`}>
+					<Link href={`/quiz/${question._id.toString()}/question/0`}>
 						<p key={index}>{question.title}</p>
 					</Link>
         		))}
