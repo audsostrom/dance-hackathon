@@ -14,6 +14,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/yjj6nsh.css"/>
         <link rel="stylesheet" href="https://use.typekit.net/yjj6nsh.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gurajada&display=swap" rel="stylesheet"></link>
       </head>
       <body className={inter.className}>{children}</body>
     </html>
