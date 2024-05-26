@@ -37,7 +37,7 @@ img {
   height: 30vh;
   align-items: center;
 }
-h3 {
+.footer-h3 {
   padding-left: 10%;
   font-size: 2em;
 }

@@ -8,7 +8,7 @@ const POSE_ENDPOINT = "http://127.0.0.1:5000/pose_feed"
 // console.log({POSE_ENDPOINT})
 
 
-export const StreamComponent = () => {
+export const StreamComponent = ({status, numLastQuestionId}) => {
   const [messages, setMessages] = useState([]);
   const router = useRouter();
   const params = useParams();
@@ -43,11 +43,21 @@ export const StreamComponent = () => {
     fetchStream().catch(console.error);
   }, []);
 
-  if (messages.slice(Math.max(messages.length - 5, 0)).every(val => val === messages[messages.length - 1] && val != 'idle') && messages && messages.length > 0) {
-    console.log('yippee', messages[messages.length - 1])
-    // redirect based on response
-    router.push(`/answer/${params['id']}/question/${params['question']}/${danceOptions[messages[messages.length - 1]]}`) // temporary
-  }
+  setTimeout(() => {
+    if (messages.slice(Math.max(messages.length - 5, 0)).every(val => val === messages[messages.length - 1] && val != 'idle') && messages && messages.length > 0) {
+      console.log('yippee', messages[messages.length - 1])
+      // redirect based on response
+      if (status == "quiz"){
+        router.push(`/quiz/${params['id']}/answer/${params['questionId']}/?answer=${danceOptions[messages[messages.length - 1]]}`) // temporary
+      } else if (status == "answer" && params['questionId'] != numLastQuestionId){
+        console.log("Test", params['questionId'], numLastQuestionId)
+        router.push(`/quiz/${params['id']}/question/${Number(params['questionId']) + 1}/`)
+      } else if (status == "answer" && Number(params['questionId']) == numLastQuestionId){
+        console.log("bruh")
+        router.push(`/quiz/${params['id']}/result/`)
+      }
+    }
+  }, 500);
 
   return (
     <>
