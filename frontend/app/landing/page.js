@@ -1,4 +1,3 @@
-'use client';
 import Link from 'next/link';
 import './landing.css';
 
@@ -6,7 +5,7 @@ import './landing.css';
  * @return {*} – Renders the Landing page
  */
 
-export default async function Landing() {
+export default function Landing() {
   return (
     <div className='landing-container'>
       <h1>DanceBrains!</h1>
