@@ -117,6 +117,22 @@ export async function getUserQuizzes(email) {
 
 }
 
+export async function getAllUsers(ids) {
+	try {
+		await connectMongoDB();
+		const objectIds = ids.map((id) => ObjectId.createFromHexString(id));
+		const users = await User.find( { _id : { $in : objectIds } } );
+		const returnVal = users === null ? null : users;
+		return returnVal;
+	} catch (error) {
+		console.log(error)
+		return NextResponse.json(
+			{message: 'An error occurred while getting users.'},
+			{status: 500}
+		);
+	}
+
+}
 export async function getAllQuizzes() {
 	try {
 		await connectMongoDB();
