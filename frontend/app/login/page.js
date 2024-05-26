@@ -34,7 +34,7 @@ export default function Login({searchParams}) {
 							redirect(`/login/?match=false`)
 						);
 						if (response) {
-							redirect(`/profile`);
+							redirect(`/home`);
 						}
 					}}
 				>

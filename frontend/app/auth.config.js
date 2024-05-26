@@ -14,7 +14,7 @@ export const authConfig = {
 		authorized({auth, request: {nextUrl}}) {
          console.log('hi')
 			const isLoggedIn = !!auth?.user;
-			const isOnRestrictedPage = nextUrl.pathname.startsWith('/profile');
+			const isOnRestrictedPage = nextUrl.pathname.startsWith('/home');
 
 			// redirect unauthenticated users to login page
 			if (isOnRestrictedPage) {
@@ -24,7 +24,7 @@ export const authConfig = {
 				(nextUrl.pathname.startsWith('/login') ||
 				nextUrl.pathname.startsWith('/register'))) {
 				// and if they're signed in don't let them to the sign-in page
-				return Response.redirect(new URL('/profile', nextUrl));
+				return Response.redirect(new URL('/home', nextUrl));
 			}
 
 			return true;

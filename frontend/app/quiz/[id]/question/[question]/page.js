@@ -2,12 +2,16 @@
 import { getQuiz } from '@/app/db';
 import './quiz.css';
 import { StreamComponent } from './stream/stream';
+import { redirect } from 'next/navigation';
 
 const WEBCAM_ENDPOINT = "http://127.0.0.1:5000/video_feed"
-export default async function Quiz() {
+export default async function Quiz({params}) {
 
   const response = await getQuiz('665275c489dd025e05f8a5b7');
   console.log('hi', response)
+  console.log('params', params)
+
+
 
 
 	return (

@@ -82,17 +82,11 @@ export async function getUser(email) {
 
 export async function getQuiz(quizId) {
 	try {
-		console.log('quiz 1')
 		await connectMongoDB();
-		console.log('quiz 2')
-
-
 		// findOne() gives one document that matches the criteria
   		const objectId = ObjectId.createFromHexString(quizId);
-		console.log('hi', objectId)
 		const quiz = await Quiz.findOne({ _id: objectId});
 		const returnVal = quiz === null ? null : quiz;
-		console.log('returnVal', returnVal)
 		return returnVal;
 	} catch (error) {
 		console.log(error)
@@ -101,4 +95,40 @@ export async function getQuiz(quizId) {
 			{status: 500}
 		);
 	}
+}
+
+export async function getUserQuizzes(email) {
+	try {
+		await connectMongoDB();
+		// findOne() gives one document that matches the criteria
+		const user = await User.findOne({email});
+		const userId = user._id.toString()
+		const quizzes = await Quiz.find({creatorId: userId});
+		const returnVal = quizzes === null ? null : quizzes;
+		return returnVal;
+
+	} catch (error) {
+		console.log(error)
+		return NextResponse.json(
+			{message: 'An error occurred while getting the quiz.'},
+			{status: 500}
+		);
+	}
+
+}
+
+export async function getAllQuizzes() {
+	try {
+		await connectMongoDB();
+		const quizzes = await Quiz.find();
+		const returnVal = quizzes === null ? null : quizzes;
+		return returnVal;
+	} catch (error) {
+		console.log(error)
+		return NextResponse.json(
+			{message: 'An error occurred while getting the quiz.'},
+			{status: 500}
+		);
+	}
+
 }

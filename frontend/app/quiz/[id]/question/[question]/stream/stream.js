@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 
 const WEBCAM_ENDPOINT = "http://127.0.0.1:5000/video_feed"
@@ -11,6 +11,7 @@ const POSE_ENDPOINT = "http://127.0.0.1:5000/pose_feed"
 export const StreamComponent = () => {
   const [messages, setMessages] = useState([]);
   const router = useRouter();
+  const params = useParams();
 
   useEffect(() => {
     const fetchStream = async () => {
@@ -36,7 +37,8 @@ export const StreamComponent = () => {
 
   if (messages.slice(Math.max(messages.length - 5, 0)).every(val => val === messages[messages.length - 1] && val != 'idle') && messages && messages.length > 0) {
     console.log('yippee', messages[messages.length - 1])
-    router.push('/profile') // temporary
+    // i hard coded the response, but it would be whatever number we assign the emote
+    router.push(`/answer/${params['id']}/question/${params['question']}/1`) // temporary
   }
 
   return (

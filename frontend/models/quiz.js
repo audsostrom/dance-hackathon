@@ -10,9 +10,13 @@ const quizSchema = new Schema(
       type: Array,
       required: true,
     },
+    title: {
+      type: String,
+      required: true,
+    }
   },
   { timestamps: true }
 );
 
-const Quiz = models.Quiz || mongoose.model("Quiz", quizSchema);
+const Quiz = models?.Quiz || mongoose.model("Quiz", quizSchema);
 export default Quiz;
