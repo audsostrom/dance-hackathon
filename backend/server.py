@@ -91,7 +91,7 @@ def chat():
     """
     
     headers = {
-        'Authorization': f'Bearer {os.environ['GPT_API_KEY']}',
+        'Authorization': f"Bearer {os.environ['GPT_API_KEY']}",
         'Content-Type': 'application/json'
     }
     

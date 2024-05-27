@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
 import Quiz from '@/models/quiz';
 import { ObjectId } from 'mongodb';
+import UserQuiz from '@/models/userQuiz';
 
 
 /**
@@ -74,6 +75,8 @@ export async function createQuiz(email, questionSet, title) {
 	}
 }
 
+
+
 /**
  * The function retrieves a user's email and password from MongoDB.
  * @param {String} email - Used for getting user from the database.
@@ -105,6 +108,7 @@ export async function getUser(email) {
 export async function getQuiz(quizId) {
 	try {
 		await connectMongoDB();
+		console.log('hi', quizId);
 		// findOne() gives one document that matches the criteria
   		const objectId = ObjectId.createFromHexString(quizId);
 		const quiz = await Quiz.findOne({ _id: objectId});
@@ -117,6 +121,100 @@ export async function getQuiz(quizId) {
 			{status: 500}
 		);
 	}
+}
+
+export async function createUserQuiz(email, quizId) {
+	try {
+		await connectMongoDB();
+		console.log(email)
+		// findOne() gives one document that matches the criteria
+		const user = await getUser(email);
+		console.log(user)
+		const quiz = await getQuiz(quizId);
+		const userResponses = new Array(quiz.questions.length);
+
+		console.log('we did it joe', user)
+		await UserQuiz.create({
+			userId: user._id.toString(),
+			quizId: quizId,
+			responses: userResponses
+		});
+		return NextResponse.json(
+			{message: 'User Quiz created.'},
+			{status: 201}
+		);
+
+	} catch (error) {
+		console.log(error)
+		return NextResponse.json(
+			{message: 'An error occurred while getting the quiz.'},
+			{status: 500}
+		);
+	}
+
+}
+
+
+export async function getUserResponse(email, quizId, questionNumber, answer) {
+	try {
+		await connectMongoDB();
+		console.log(email)
+		// findOne() gives one document that matches the criteria
+		const user = await getUser(email);
+		const userQuizzes = await UserQuiz.find({userId: user._id.toString(), quizId: quizId}).sort({'createdAt':-1})  //1 for ascending and -1 for descending;
+
+		console.log(userQuizzes)
+		console.log(user)
+		if (userQuizzes) {
+			await UserQuiz.findOneAndUpdate(
+				{ _id: userQuizzes[0]._id },
+				{
+				  $set: {
+					 [`responses.${questionNumber}`]: answer,
+				  },
+				}
+			);
+			if (userQuizzes.length > 1){
+				return userQuizzes[1]
+			}
+
+		}
+		else {
+			return null
+		}
+
+		return NextResponse.json(
+			{message: 'User Quiz found.'},
+			{status: 201}
+		);
+
+	} catch (error) {
+		console.log(error)
+		return NextResponse.json(
+			{message: 'An error occurred while getting the quiz.'},
+			{status: 500}
+		);
+	}
+
+}
+export async function getLastUserResponse(email, quizId, answer) {
+	try {
+		await connectMongoDB();
+		console.log(email)
+		// findOne() gives one document that matches the criteria
+		const user = await getUser(email);
+		const userQuizzes = await UserQuiz.find({userId: user._id.toString(), quizId: quizId}).sort({'createdAt':-1})  //1 for ascending and -1 for descending;
+
+		return userQuizzes[0] ? userQuizzes[0] : null;
+
+	} catch (error) {
+		console.log(error)
+		return NextResponse.json(
+			{message: 'An error occurred while getting the quiz.'},
+			{status: 500}
+		);
+	}
+
 }
 
 export async function getUserQuizzes(email) {

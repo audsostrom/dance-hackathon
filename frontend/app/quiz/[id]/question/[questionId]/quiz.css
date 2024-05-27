@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  padding: 5%;
+  padding: 2.5%;
 }
 .options-container {
   display: grid;
@@ -40,4 +40,12 @@ img {
 .footer-h3 {
   padding-left: 10%;
   font-size: 2em;
+}
+.stream-label {
+  font-family: "bd-caramel-variable",sans-serif;
+  font-variation-settings: 'BUBL' 300;
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: .3rem;
+  text-align: center;
 }

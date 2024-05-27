@@ -35,3 +35,11 @@ img {
   height: auto;
   max-width: 100%;
 }
+.stream-label {
+  font-family: "bd-caramel-variable",sans-serif;
+  font-variation-settings: 'BUBL' 300;
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: .3rem;
+  text-align: center;
+}

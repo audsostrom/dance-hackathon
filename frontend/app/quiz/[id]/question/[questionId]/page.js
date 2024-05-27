@@ -3,11 +3,20 @@ import './quiz.css';
 import { StreamComponent } from './stream/stream';
 import { redirect } from 'next/navigation';
 import Option from './_components/option/option';
+import { createUserQuiz } from '@/app/db';
+import { auth } from '../../../../auth';
 
 const WEBCAM_ENDPOINT = 'http://127.0.0.1:5000/video_feed';
 export default async function Quiz({ params: { id, questionId } }) {
+  const session = await auth();
+  console.log(session?.user);
   const response = await getQuiz(id);
+  console.log('params', id, questionId)
 
+  if (questionId == 0 && session?.user?.email) {
+    console.log('fudge')
+    await createUserQuiz(session?.user?.email, id)
+  }
   const danceOptions = {
     dab: 0,
     whip: 1,
@@ -38,7 +47,7 @@ export default async function Quiz({ params: { id, questionId } }) {
         </div>
 
         <div className='stream-container'>
-          <h1>YOUR MOM</h1>
+          <div className='stream-label'>you</div>
           <img src={WEBCAM_ENDPOINT} alt='webcam' />
         </div>
       </div>
