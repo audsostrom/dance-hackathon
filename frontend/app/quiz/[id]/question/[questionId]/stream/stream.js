@@ -15,9 +15,9 @@ export const StreamComponent = ({status, numLastQuestionId}) => {
 
   const danceOptions = {
     'dab': 0,
-    'whip': 1,
-    'squidward': 2,
-    'come up with fourth move': 3
+    'jazzhands': 1,
+    'ldance': 2,
+    'squidward': 3
   }
 
 
@@ -57,7 +57,7 @@ export const StreamComponent = ({status, numLastQuestionId}) => {
         router.push(`/quiz/${params['id']}/result/`)
       }
     }
-  }, 500);
+  }, 2000);
 
   return (
     <>
