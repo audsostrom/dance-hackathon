@@ -1,0 +1,42 @@
+.register-container{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.register-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: "coolvetica", sans-serif;
+  width: 50vw;
+  color: #F8F0E3;
+  height: 50vh;
+}
+.register-header {
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  font-size: 40px;
+  font-family: "coolvetica", sans-serif;
+  font-weight: 700;
+  color: #F8F0E3;
+  font-style: normal;
+}
+
+.register-subheader {
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  font-size: 20px;
+  font-family: "coolvetica", sans-serif;
+  font-weight: 700;
+  color: #F8F0E3;
+  font-style: normal;
+}
+ 
+.sign-in-btn {
+  color: #8A22A2;
+}
+
+.register-btn {
+  font-family: "coolvetica", sans-serif;
+}

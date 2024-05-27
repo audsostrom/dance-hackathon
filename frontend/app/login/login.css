@@ -1,0 +1,42 @@
+.login-container{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: "coolvetica", sans-serif;
+  width: 50vw;
+  color: #F8F0E3;
+  height: 50vh;
+}
+.login-header {
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  font-size: 40px;
+  font-family: "coolvetica", sans-serif;
+  font-weight: 700;
+  color: #F8F0E3;
+  font-style: normal;
+}
+
+.login-subheader {
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  font-size: 20px;
+  font-family: "coolvetica", sans-serif;
+  font-weight: 700;
+  color: #F8F0E3;
+  font-style: normal;
+}
+ 
+.sign-up-btn {
+  color: #8A22A2;
+}
+
+.sign-in-btn {
+  font-family: "coolvetica", sans-serif;
+}

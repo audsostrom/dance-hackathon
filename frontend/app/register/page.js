@@ -37,13 +37,13 @@ export default function Register() {
           Create Your Account
 					<div className="register-subheader">
 						{'Already have an account? '}
-						<Link href="/login">
+						<Link className='sign-in-btn' href="/login">
               Sign in
 						</Link>
 					</div>
 				</div>
 				<Form action={register}>
-					<div className="register-button">
+					<div className="register-btn">
 						<SubmitButton>Sign Up</SubmitButton>
 					</div>
 				</Form>

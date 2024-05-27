@@ -1,7 +1,7 @@
 .email-input-wrapper, .password-input-wrapper {
    display: flex;
    flex-direction: column;
-   font-family: 'Poppins';
+   font-family: "coolvetica", sans-serif;
 
 }
 

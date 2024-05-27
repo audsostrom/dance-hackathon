@@ -3,10 +3,11 @@
    background-color: #1E5EFF;
    border: none;
    color: white;
-   font-family: 'Montserrat';
+   font-family: "coolvetica", sans-serif;
    width: 100%;
    border-radius:2.5px;
    padding: 10px 20px;
    text-align: center;
+   font-size: 1.2em;
    justify-content: center;
 }
