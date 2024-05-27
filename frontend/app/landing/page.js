@@ -8,7 +8,7 @@ import './landing.css';
 export default function Landing() {
   return (
     <div className='landing-container'>
-      <h1>DanceBrains!</h1>
+      <h1 className='heading'>DanceBrains!</h1>
       <div className='hero-container'>
         <Link className='login-btn' href='/login'>
           Login to start!
