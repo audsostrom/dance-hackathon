@@ -4,7 +4,7 @@
 import json
 from flask import stream_with_context, Flask, Response, request, jsonify
 from flask_cors import CORS
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import mediapipe as mp
 import datetime
 import cv2
@@ -18,7 +18,7 @@ import os
 # Initializing flask app
 app = Flask(__name__)
 CORS(app)
-load_dotenv()
+# load_dotenv()
 
 
 mp_drawing = mp.solutions.drawing_utils  # Drawing helpers
@@ -120,7 +120,7 @@ def video_feed():
     # return webcam()
     return Response(webcam(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-with open('best-dab-pose-model.pkl', 'rb') as f:
+with open('final_pose_model.pkl', 'rb') as f:
     model = joblib.load(f)
 
 
