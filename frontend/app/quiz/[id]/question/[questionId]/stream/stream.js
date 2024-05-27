@@ -57,7 +57,7 @@ export const StreamComponent = ({status, numLastQuestionId}) => {
         router.push(`/quiz/${params['id']}/result/`)
       }
     }
-  }, 500);
+  }, 2000);
 
   return (
     <>
