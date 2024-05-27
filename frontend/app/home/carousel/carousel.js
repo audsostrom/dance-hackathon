@@ -51,7 +51,7 @@ export default function Carousel(props) {
             <div className='cards-wrapper'>
             {props.cards.slice(index, index+4).map((question, index) => (
                <div className='card-wrapper'>
-               <Link className='card' key={index} href={`/quiz/${question._id.toString()}/question/0`}>
+               <Link className='card' key={index} href={`/quiz/${question._id.toString()}/splash`}>
                   <div key={index}>
                      <div>{question.title}</div>
                   </div>
